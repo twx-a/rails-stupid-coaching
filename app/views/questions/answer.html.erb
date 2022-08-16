@@ -1,0 +1,26 @@
+<%# 1. If the message is I am going to work, the coach will answer Great!
+  2. If the message has a question mark ? at the end, the coach will answer Silly question, get dressed and go to work!.
+  3. Otherwise the coach will answer I don't care, get dressed and go to work! %>
+<div class= container>
+  <div class = "question">
+    <%= @answer = params[:question]%>
+    <p>- You</p>
+  </div>
+
+  <div class="answer bg-warning bg-opacity-10" >
+    <% if @answer.include?('?')%>
+      <p>Silly Question, get dressed and go to work!</p>
+      <p> - Your Coach </p>
+    <% elsif @answer == 'I am going to work' %>
+      <p>Great!</p>
+      <p> - Your Coach </p>
+    <% elsif @answer == @answer.upcase%>
+      <p> I can feel your motivation!</p>
+      <p> - Your Coach </p>
+    <% else %>
+      <p> I don't care, get dressed and go to work</p>
+      <p> - Your Coach </p>
+    <% end %>
+  </div>
+  <%= link_to "Ask again!", ask_path, :class => " btn btn-primary"%>
+</div>
